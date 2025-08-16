@@ -187,7 +187,7 @@ const ResponsiveSidebar = () => {
       </div>
 
       {/* Other dashboard components  */}
-      <div className="flex-1 p-4 sm:p-8 lg:p-12 bg-gray-50 min-h-screen">
+      {/* <div className="flex-1 p-4 sm:p-8 lg:p-12 bg-gray-50 min-h-screen">
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 lg:p-12">
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
@@ -199,7 +199,7 @@ const ResponsiveSidebar = () => {
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

@@ -1,6 +1,6 @@
 import { CheckCircle, BookOpen, Star } from "lucide-react";
 
-export default function Card({ title, value, description }) {
+export default function Card({ key, title, value, description }) {
   const icons = {
     Attendance: { icon: CheckCircle, color: "text-green-500" },
     Homework: { icon: BookOpen, color: "text-blue-500" },
@@ -11,7 +11,10 @@ export default function Card({ title, value, description }) {
   const Icon = IconConfig.icon;
 
   return (
-    <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-[0_8px_20px_rgba(0,0,0,0.08)] w-72 hover:shadow-[0_12px_30px_rgba(0,0,0,0.12)] transition-all duration-300 font-['Poppins']">
+    <div
+      key={key}
+      className="bg-white p-6 rounded-2xl border border-gray-100 shadow-[0_8px_20px_rgba(0,0,0,0.08)] w-72 hover:shadow-[0_12px_30px_rgba(0,0,0,0.12)] transition-all duration-300 font-['Poppins']"
+    >
       {/* Title */}
       <h3 className="text-gray-800 text-sm font-semibold tracking-wide mb-3">
         {title}
@@ -19,7 +22,7 @@ export default function Card({ title, value, description }) {
 
       {/* Value + Icon */}
       <div className="flex items-center gap-2 mb-3">
-        {Icon && <Icon className={w-6 h-6 ${IconConfig.color}} />}
+        {Icon && <Icon className={`w-6 h-6 ${IconConfig.color}`} />}
         <span className="text-3xl font-extrabold text-gray-900 drop-shadow-sm">
           {value}
         </span>
