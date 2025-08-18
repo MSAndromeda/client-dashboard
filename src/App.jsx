@@ -3,7 +3,7 @@ import WelcomeSection from "./components/WelcomeSection";
 import UpcomingEvents from "./components/UpcomingEvents";
 import StatsCards from "./components/StatsCards";
 import ResponsiveSidebar from "./components/ResponsiveSidebar";
-import HomeWorkProgress from "./components/homeworkprogress";
+import HomeWorkProgress from "./components/HomeWorkProgress";
 import Timetable from "./components/Timetable";
 
 function App() {
