@@ -3,25 +3,25 @@ const UpcomingEvents = () => {
     {
       title: "English docents",
       date: "18 Apr, 2024, 15:00",
-      image: "/public/EnglishDocents.jpg",
+      image: "/EnglishDocents.jpg",
       type: "english",
     },
     {
       title: "RoboFest",
       date: "26 May, 2024, Today",
-      image: "/public/robofest.jpg",
+      image: "/robofest.jpg",
       type: "robotics",
     },
     {
       title: "AI introduction",
       date: "09 Jun, 2024, 09:00",
-      image: "/public/AIIntro.jpg",
+      image: "/AIIntro.jpg",
       type: "ai",
     },
     {
       title: "Why engineers are must-haves",
       date: "30 Jun, 2024, 15:00",
-      image: "/public/Engineeers.jpg",
+      image: "/Engineeers.jpg",
       type: "engineering",
     },
   ];
@@ -31,9 +31,9 @@ const UpcomingEvents = () => {
         Upcoming events
       </h3>
 
-      <div className="space-y-4 h-100 overflow-y-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-x-4 gap-y-4 h-100 overflow-y-auto">
         {upcomingEvents.map((event, index) => (
-          <div key={index} className="relative w-full h-[150px]">
+          <div key={index} className="relative w-fit h-[150px]">
             {/* Background Image */}
             <img
               src={event.image}

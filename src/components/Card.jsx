@@ -13,7 +13,7 @@ export default function Card({ key, title, value, description }) {
   return (
     <div
       key={key}
-      className="bg-white p-6 rounded-2xl border border-gray-100 shadow-[0_8px_20px_rgba(0,0,0,0.08)] w-72 hover:shadow-[0_12px_30px_rgba(0,0,0,0.12)] transition-all duration-300 font-['Poppins']"
+      className="bg-white p-6 rounded-2xl border border-gray-100 shadow-[0_8px_20px_rgba(0,0,0,0.08)] w-54 2xl:w-74 hover:shadow-[0_12px_30px_rgba(0,0,0,0.12)] transition-all duration-300 font-['Poppins']"
     >
       {/* Title */}
       <h3 className="text-gray-800 text-sm font-semibold tracking-wide mb-3">

@@ -3,6 +3,8 @@ import WelcomeSection from "./components/WelcomeSection";
 import UpcomingEvents from "./components/UpcomingEvents";
 import StatsCards from "./components/StatsCards";
 import ResponsiveSidebar from "./components/ResponsiveSidebar";
+import HomeWorkProgress from "./components/homeworkprogress";
+import Timetable from "./components/Timetable";
 
 function App() {
   return (
@@ -15,7 +17,7 @@ function App() {
           {/* Header */}
           <DashboardHeader />
 
-          <div className="flex h-full">
+          <div className="flex flex-col lg:flex-row h-full">
             {/* Main Dashboard */}
             <div className="flex-1 p-6">
               {/* Welcome Section */}
@@ -25,15 +27,16 @@ function App() {
               <StatsCards />
 
               {/* Timetable and Upcoming Events */}
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-rows-2 lg:grid-cols-2 gap-6">
                 {/* Timetable */}
+                <Timetable />
 
                 {/* Upcoming Events */}
-                <UpcomingEvents />
                 <UpcomingEvents />
               </div>
             </div>
             {/* Right Sidebar */}
+            <HomeWorkProgress />
           </div>
         </div>
       </div>

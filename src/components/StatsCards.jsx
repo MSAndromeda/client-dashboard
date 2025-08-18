@@ -19,7 +19,7 @@ const StatsCards = () => {
     },
   ];
   return (
-    <div className="grid grid-cols-3 gap-6 mb-6">
+    <div className="grid grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-4 mb-6">
       {cardData.map((card, index) => (
         <Card key={index} {...card} />
       ))}
