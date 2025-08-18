@@ -9,7 +9,7 @@ import Timetable from "./components/Timetable";
 function App() {
   return (
     <>
-      <div className="flex bg-gray-100">
+      <div className="flex bg-gray-100 max-w-fit m-auto">
         {/* Sidebar */}
         <ResponsiveSidebar />
         {/* Main Content */}
