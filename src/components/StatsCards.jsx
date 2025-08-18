@@ -19,7 +19,7 @@ const StatsCards = () => {
     },
   ];
   return (
-    <div className="grid grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-4 mb-6">
+    <div className="flex my-4 space-x-4 space-y-4 flex-wrap xl:flex-nowrap justify-between">
       {cardData.map((card, index) => (
         <Card key={index} {...card} />
       ))}
