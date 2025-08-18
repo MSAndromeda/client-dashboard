@@ -17,9 +17,9 @@ function App() {
           {/* Header */}
           <DashboardHeader />
 
-          <div className="flex flex-col lg:flex-row h-full">
+          <div className="flex flex-col lg:flex-row h-fit">
             {/* Main Dashboard */}
-            <div className="flex-1 p-6">
+            <div className="flex-1 px-6 pt-6">
               {/* Welcome Section */}
               <WelcomeSection />
 
@@ -27,7 +27,7 @@ function App() {
               <StatsCards />
 
               {/* Timetable and Upcoming Events */}
-              <div className="grid grid-rows-2 lg:grid-cols-2 gap-6">
+              <div className="grid grid-rows-2 lg:grid-rows-1 lg:grid-cols-2 gap-4">
                 {/* Timetable */}
                 <Timetable />
 
