@@ -16,7 +16,7 @@ export default function HomeWorkProgress() {
   };
 
   return (
-    <div className="bg-white shadow-md rounded-xl p-4">
+    <div className="bg-white shadow-md rounded-xl p-4 mt-6 md:mt-0">
       <h3 className="text-lg font-bold mb-3">Homework Progress</h3>
 
       <h4 className="font-semibold mb-1">To Do</h4>

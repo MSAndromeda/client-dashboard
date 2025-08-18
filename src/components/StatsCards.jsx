@@ -23,7 +23,6 @@ const StatsCards = () => {
       {cardData.map((card, index) => (
         <Card key={index} {...card} />
       ))}
-      ;
     </div>
   );
 };

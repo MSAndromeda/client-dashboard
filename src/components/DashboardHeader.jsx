@@ -2,14 +2,14 @@ import { Search, Bell } from "lucide-react";
 const DashboardHeader = () => {
   return (
     <header className="bg-white border-b border-gray-200 px-4 sm:px-6 py-3 sm:py-4 my-2 mr-2 sm:mr-4 rounded-lg ml-16 lg:ml-4">
-      <div className="flex flex-wrap items-center justify-between gap-4">
+      <div className="flex items-center justify-between gap-4">
         <div className="flex items-center space-x-4">
           <div className="relative">
             <Search className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
             <input
               type="text"
               placeholder="Search"
-              className="pl-10 pr-4 py-2 md:w-110 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300"
+              className="pl-10 pr-4 py-2 w-3/4 md:w-110  border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300"
             />
           </div>
         </div>
