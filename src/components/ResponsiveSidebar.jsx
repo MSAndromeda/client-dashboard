@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Home,
   BookOpen,
@@ -18,11 +19,15 @@ const ResponsiveSidebar = () => {
 
   const sidebarItems = [
     { icon: Home, label: "Home", id: "home" },
-    { icon: BookOpen, label: "Lessons", id: "lessons" },
+    { icon: BookOpen, label: "Client Details", id: "clientdetails" },
     { icon: Clock, label: "Timetable", id: "timetable" },
-    { icon: Clipboard, label: "Homework", id: "homework" },
-    { icon: MessageCircle, label: "Messages", id: "messages" },
-    { icon: BarChart3, label: "Assessments", id: "assessments", badge: "AI" },
+    { icon: Clipboard, label: "Paid Clients", id: "paidclients" },
+    { icon: MessageCircle, label: "Client FollowUp", id: "clientfollowup" },
+    {
+      icon: BarChart3,
+      label: "Client Aquesition Stats",
+      id: "clientaquestionstats",
+    },
   ];
 
   const bottomSidebarItems = [
@@ -42,10 +47,11 @@ const ResponsiveSidebar = () => {
   };
 
   const renderSidebarButton = (item, index) => (
-    <button
-      key={index}
-      onClick={() => handleItemClick(item.label)}
-      className={`
+    <Link to={`/${item.id !== "home" ? item.id : ""}`}>
+      <button
+        key={index}
+        onClick={() => handleItemClick(item.label)}
+        className={`
         w-full flex items-center space-x-3 px-4 py-3 rounded-xl 
         font-medium text-left transition-all duration-200
         transform hover:scale-[1.02] active:scale-[0.98]
@@ -56,19 +62,19 @@ const ResponsiveSidebar = () => {
         }
         group relative overflow-hidden
       `}
-    >
-      {activeItem !== item.label && (
-        <div
-          className={`
+      >
+        {activeItem !== item.label && (
+          <div
+            className={`
             absolute inset-0 bg-gradient-to-r from-blue-50 to-purple-50 
             transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left
           `}
-        />
-      )}
+          />
+        )}
 
-      <div className="relative z-10 flex items-center space-x-3 w-full">
-        <item.icon
-          className={`
+        <div className="relative z-10 flex items-center space-x-3 w-full">
+          <item.icon
+            className={`
             w-5 h-5 transition-colors duration-200
             ${
               activeItem === item.label
@@ -76,11 +82,11 @@ const ResponsiveSidebar = () => {
                 : "text-gray-500 group-hover:text-blue-600"
             }
           `}
-        />
-        <span className="flex-1">{item.label}</span>
-        {item.badge && (
-          <span
-            className={`
+          />
+          <span className="flex-1">{item.label}</span>
+          {item.badge && (
+            <span
+              className={`
               text-xs px-2 py-1 rounded-full font-semibold transition-colors duration-200
               ${
                 activeItem === item.label
@@ -88,17 +94,18 @@ const ResponsiveSidebar = () => {
                   : "bg-blue-100 text-blue-600 group-hover:bg-blue-600 group-hover:text-white"
               }
             `}
-          >
-            {item.badge}
-          </span>
-        )}
-      </div>
+            >
+              {item.badge}
+            </span>
+          )}
+        </div>
 
-      {/* Active indicator */}
-      {activeItem === item.label && (
-        <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-8 bg-white rounded-r-full" />
-      )}
-    </button>
+        {/* Active indicator */}
+        {activeItem === item.label && (
+          <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-8 bg-white rounded-r-full" />
+        )}
+      </button>
+    </Link>
   );
 
   return (
