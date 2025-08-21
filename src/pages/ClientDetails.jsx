@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Phone, Mail, MapPin, Edit, Save, X, Copy } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
 import { HeaderDetails } from "../components/ClientDetails/Header";
 
 // --- Mock Data ---
@@ -64,10 +64,11 @@ function getAge(dob) {
   return Math.abs(new Date(diff).getUTCFullYear() - 1970);
 }
 
-export default function ClientDetails() {
-  const [client, setClient] = useState(mockClients[0]);
+// Reusable per-client card (local state per card)
+function ClientCard({ initialClient }) {
+  const [client, setClient] = useState(initialClient);
   const [editMode, setEditMode] = useState(false);
-  const [formData, setFormData] = useState(client);
+  const [formData, setFormData] = useState(initialClient);
 
   const handleChange = (field, value) => {
     setFormData({ ...formData, [field]: value });
@@ -79,19 +80,18 @@ export default function ClientDetails() {
   };
 
   return (
-    <div className="w-full">
-      {/* Header Card */}
-      <HeaderDetails client={client} handleSave={handleSave}/>
-      
+    <div className="bg-white border border-slate-200 rounded-md p-4">
+      {/* Header (reuses existing HeaderDetails if available) */}
+      <HeaderDetails client={client} handleSave={handleSave} />
 
       {/* Body Two Column */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
         {/* Demographic */}
-        <div className="shadow-md bg-white rounded-2xl p-4 space-y-2">
-          <h3 className="font-semibold text-black">Demographics</h3>
+        <div className="p-3 border border-slate-100 rounded-md">
+          <h3 className="font-semibold text-black text-sm">Demographics</h3>
           {editMode ? (
             <>
-              <label className="block text-sm">
+              <label className="block text-sm mt-2">
                 Date of Birth
                 <input
                   type="date"
@@ -100,7 +100,7 @@ export default function ClientDetails() {
                   className="w-full border rounded p-1 mt-1"
                 />
               </label>
-              <label className="block text-sm">
+              <label className="block text-sm mt-2">
                 Gender
                 <input
                   value={formData.gender}
@@ -111,10 +111,10 @@ export default function ClientDetails() {
             </>
           ) : (
             <>
-              <p>
+              <p className="mt-2">
                 <span className="font-medium">Age:</span> {getAge(client.dob)}
               </p>
-              <p>
+              <p className="mt-1">
                 <span className="font-medium">Gender:</span> {client.gender}
               </p>
             </>
@@ -122,11 +122,11 @@ export default function ClientDetails() {
         </div>
 
         {/* Contact */}
-        <div className="shadow-md bg-white rounded-2xl p-4 space-y-2">
-          <h3 className="font-semibold text-black">Contact</h3>
+        <div className="p-3 border border-slate-100 rounded-md">
+          <h3 className="font-semibold text-black text-sm">Contact</h3>
           {editMode ? (
             <>
-              <label className="block text-sm">
+              <label className="block text-sm mt-2">
                 Phone
                 <input
                   value={formData.phone}
@@ -134,7 +134,7 @@ export default function ClientDetails() {
                   className="w-full border rounded p-1 mt-1"
                 />
               </label>
-              <label className="block text-sm">
+              <label className="block text-sm mt-2">
                 Email
                 <input
                   value={formData.email}
@@ -142,7 +142,7 @@ export default function ClientDetails() {
                   className="w-full border rounded p-1 mt-1"
                 />
               </label>
-              <label className="block text-sm">
+              <label className="block text-sm mt-2">
                 Address
                 <input
                   value={formData.address?.line || ""}
@@ -158,15 +158,15 @@ export default function ClientDetails() {
             </>
           ) : (
             <>
-              <p className="flex items-center text-blue-500">
+              <p className="flex items-center text-blue-500 mt-2">
                 <Phone size={16} className="mr-1" />
                 <a href={`tel:${client.phone}`}>{client.phone}</a>
               </p>
-              <p className="flex items-center text-blue-500">
+              <p className="flex items-center text-blue-500 mt-1">
                 <Mail size={16} className="mr-1" />
                 <a href={`mailto:${client.email}`}>{client.email}</a>
               </p>
-              <p className="flex items-center text-blue-500">
+              <p className="flex items-center text-blue-500 mt-1">
                 <MapPin size={16} className="mr-1" />
                 {client.address
                   ? `${client.address.line}, ${client.address.city}, ${client.address.state} ${client.address.postal}`
@@ -178,8 +178,8 @@ export default function ClientDetails() {
       </div>
 
       {/* Notes */}
-      <div className="shadow-md bg-white rounded-2xl p-4">
-        <h3 className="font-semibold text-black">Notes</h3>
+      <div className="mt-3 p-3 border border-slate-100 rounded-md">
+        <h3 className="font-semibold text-black text-sm">Notes</h3>
         {editMode ? (
           <input
             value={formData.notes}
@@ -187,8 +187,27 @@ export default function ClientDetails() {
             className="w-full border rounded p-1 mt-1"
           />
         ) : (
-          <p className="text-slate-700">{client.notes}</p>
+          <p className="text-slate-700 mt-2">{client.notes}</p>
         )}
+      </div>
+    </div>
+  );
+}
+
+export default function ClientDetails() {
+  // Show two components (first two mock clients) centered and compact
+  const clientsToShow = mockClients.slice(0, 2);
+
+  return (
+    <div className="min-h-screen bg-slate-100 py-8">
+      <div className="w-3/4 mx-auto">
+        <h2 className="text-2xl font-bold mb-4">Clients showcase</h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {clientsToShow.map((c) => (
+            <ClientCard key={c.id} initialClient={c} />
+          ))}
+        </div>
       </div>
     </div>
   );
