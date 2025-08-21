@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
 function App() {
   return (
     <>
-      <div className="flex bg-gray-100 max-w-fit m-auto">
+      <div className="flex bg-gray-100 w-screen m-auto">
         {/* Sidebar */}
         <ResponsiveSidebar />
         {/* Main Content */}
