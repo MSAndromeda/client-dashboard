@@ -1,7 +1,6 @@
-import React from "react";
-
+import ClientFollowUpPage from '../components/ClientFollowUp/Clientfollowup'
 const ClientFollowUp = () => {
-  return <div>ClientFollowUp</div>;
+  return <ClientFollowUpPage/>;
 };
 
 export default ClientFollowUp;
